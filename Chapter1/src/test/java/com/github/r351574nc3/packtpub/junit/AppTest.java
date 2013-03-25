@@ -20,6 +20,11 @@ public class AppTest {
     }
 
     @Test
+    public void compareIntegers() {
+        assertEquals("failure - strings not same", 5l, 4l);
+    }
+
+    @Test
     @Ignore
     public void thisIsIgnored() {
     }
