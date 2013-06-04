@@ -6,16 +6,20 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.r351574nc3.packtpub.junit</groupId>
-  <artifactId>chapter7-gwt-example</artifactId>
+  <artifactId>chapter7-webapp-example</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>Sample Webapp</name>
 
   <properties>
-    <junit.version>4.8.1</junit.version>
+    <jersey-servlet.version>1.17.1</jersey-servlet.version>
+    <junit.version>4.9</junit.version>
+    <maven-surefire-plugin.version>2.14.1</maven-surefire-plugin.version>
+    <maven-failsafe-plugin.version>2.14.1</maven-failsafe-plugin.version>
     <maven-war-plugin.version>2.1.1</maven-war-plugin.version>
+    <selenium-java.version>2.33.0</selenium-java.version>
     <selenium-maven-plugin.version>2.3</selenium-maven-plugin.version>
-
+    <tomcat7-maven-plugin.version>2.1</tomcat7-maven-plugin.version>
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -40,15 +44,29 @@
       <classifier>sources</classifier>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium-java.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-firefox-driver</artifactId>
+      <version>${selenium-java.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-servlet</artifactId>
+      <version>${jersey-servlet.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
-    <!-- Generate compiled stuff in the folder used for developing mode -->
-    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 
     <plugins>
 
-      <!-- Copy static web files before executing gwt:run -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -66,6 +84,7 @@
         </configuration>
       </plugin>
 
+<!--
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>selenium-maven-plugin</artifactId>
@@ -82,10 +101,12 @@
           </execution>
         </executions>
       </plugin>
+-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
+        <version>${maven-failsafe-plugin.version}</version>
         <executions>
           <execution>
             <id>verify</id>
@@ -96,6 +117,7 @@
           </execution>
         </executions>
         <configuration>
+          <groups>com.github.r351574nc3.packtpub.junit.IntegrationTests</groups>
           <includes>
             <include>**/*Test.java</include>
           </includes>
@@ -104,12 +126,46 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>      
+        <artifactId>maven-surefire-plugin</artifactId> 
+        <version>${maven-surefire-plugin.version}</version>
         <configuration>
-          <skip>false</skip>
+          <skip>true</skip>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>${tomcat7-maven-plugin.version}</version>
+        <configuration>
+          <path>/test-example</path>
+          <useTestClasspath>true</useTestClasspath>
+        </configuration>
+        <executions>
+          <!-- At pre-integration-test phase, run the war in an embedded Tomcat server. -->
+          <execution>
+            <id>start-tomcat</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>run-war-only</goal>
+            </goals>
+            <configuration>
+              <port>9090</port>
+              <fork>true</fork>
+            </configuration>
+          </execution>
+          <!-- At post-integration-test phase, stop the embedded Tomcat server. -->
+          <execution>
+            <id>stop-tomcat</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>shutdown</goal>
+            </goals>
+          </execution>
+        </executions>      
+      </plugin>
     </plugins>
+
   </build>
 
 </project>
