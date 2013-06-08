@@ -72,12 +72,12 @@
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('.btn').click(function(e) {
+        jQuery(document).ready(function() {
+            jQuery('.btn').click(function(e) {
                 e.preventDefault()
-                $.get('rest/repeat/' + $('[name=torepeat]').val(),
+                jQuery.get('rest/repeat/' + jQuery('[name=torepeat]').val(),
                     function(data) {
-                        $('.results').html(
+                        jQuery('.results').html(
         '<div class="alert alert-success">'
            + '<button type="button" class="close" data-dismiss="alert">&times;</button>'
             + '<p class="alert-body">' + data.text + '</p>'
