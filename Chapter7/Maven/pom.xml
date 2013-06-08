@@ -95,6 +95,7 @@
         <version>${selenium-maven-plugin.version}</version>
         <executions>
           <execution>
+            <id>start-selenium</id>
             <phase>pre-integration-test</phase>
             <goals>
               <goal>start-server</goal>
@@ -104,6 +105,7 @@
             </configuration>
           </execution>
           <execution>
+            <id>stop-selenium</id>
             <phase>post-integration-test</phase>
             <goals>
               <goal>stop-server</goal>
