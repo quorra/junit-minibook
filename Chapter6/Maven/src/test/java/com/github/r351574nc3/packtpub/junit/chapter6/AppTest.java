@@ -34,6 +34,7 @@ import com.github.r351574nc3.packtpub.junit.App;
 
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
@@ -44,6 +45,9 @@ import org.junit.runners.JUnit4;
  */
 @RunWith(JUnit4.class)
 public class AppTest {
+
+    @Rule
+    public CreateIssueRule githubIssueTestRule = new CreateIssueRule();
 
     @Test(expected = IllegalArgumentException.class)
     public void thisFails() {
