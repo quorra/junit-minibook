@@ -40,6 +40,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
@@ -62,12 +63,13 @@ import static org.junit.Assert.*;
  * @author Leo Przybylski
  */
 public class AppTest {
-   
-    protected static WebDriver driver;
+    @Rule
+    public TakeScreenshotRule screenshotTestRule = new TakeScreenshotRule(driver);
+    
+    public static WebDriver driver = new FirefoxDriver();
     
     @Before
     public void createDriver() {
-        driver = new FirefoxDriver();
     }
 
     @After
@@ -83,5 +85,15 @@ public class AppTest {
         page.typeRepeatText("Coming from a test")
             .clickSubmit();
         assertTrue("Jersey say : Coming from a test".equals(page.getRepeatedText()));
+    }
+
+    @Test
+    @Category(IntegrationTests.class)
+    public void thisAlwaysFails() {
+        driver.get("http://localhost:9090/test-example/");        
+        final RepeatPage page = new RepeatPage(driver);
+        page.typeRepeatText("Coming from a test")
+            .clickSubmit();
+        fail();
     }
 }
