@@ -36,19 +36,14 @@
         </configuration>
         <executions>
           <execution>
-            <id>clean</id>
-            <phase>pre-site</phase>
-            <goals>
-              <goal>clean</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>instrument</id>
-            <phase>install</phase>
+            <id>instrument-code</id>
+            <phase>process-classes</phase>
             <goals>
               <goal>instrument</goal>
-              <goal>cobertura</goal>
             </goals>
+            <configuration>
+              <attach>true</attach>
+            </configuration>
           </execution>
         </executions>
       </plugin>
