@@ -9,6 +9,7 @@
   <url>http://www.github.com/r351574nc3/junit-minibook</url>
   <properties>
     <cobertura-maven-plugin.version>2.4</cobertura-maven-plugin.version>
+    <cobertura.version>1.9.2</cobertura.version>
     <maven-surefire-plugin.version>2.14</maven-surefire-plugin.version>
     <sonar.dynamicAnalysis>true</sonar.dynamicAnalysis>
     <sonar.java.coveragePlugin>cobertura</sonar.java.coveragePlugin>
@@ -17,7 +18,7 @@
     <dependency>
       <groupId>net.sourceforge.cobertura</groupId>
       <artifactId>cobertura-runtime</artifactId>
-      <version>${cobertura-maven-plugin.version}</version>
+      <version>${cobertura.version}</version>
       <scope>provided</scope>
       <type>pom</type>
     </dependency>
