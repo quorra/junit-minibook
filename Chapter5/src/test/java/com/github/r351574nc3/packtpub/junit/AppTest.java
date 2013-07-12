@@ -20,6 +20,11 @@ public class AppTest {
     }
 
     @Test
+    public void thisAlwaysPasses2() {
+        new App();
+    }
+
+    @Test
     @Ignore
     public void thisIsIgnored() {
     }
