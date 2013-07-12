@@ -44,7 +44,7 @@
           </execution>
           <execution>
             <id>instrument</id>
-            <phase>test</phase>
+            <phase>install</phase>
             <goals>
               <goal>instrument</goal>
               <goal>cobertura</goal>
