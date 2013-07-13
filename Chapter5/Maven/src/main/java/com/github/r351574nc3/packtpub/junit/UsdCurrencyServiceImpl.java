@@ -28,7 +28,7 @@
  */
 package com.github.r351574nc3.packtpub.junit;
 
-import java.lang.math.BigDecimal;
+import java.math.BigDecimal;
 
 /**
  * 

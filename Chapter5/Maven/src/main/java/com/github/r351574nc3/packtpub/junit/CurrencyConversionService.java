@@ -28,7 +28,7 @@
  */
 package com.github.r351574nc3.packtpub.junit;
 
-import java.lang.math.BigDecimal;
+import java.math.BigDecimal;
 
 /**
  * 
@@ -36,5 +36,5 @@ import java.lang.math.BigDecimal;
  */
 public interface CurrencyConversionService {
         
-    <T extends Currency> T convert(final Currency source);
+    BigDecimal convert(BigDecimal source);
 }
