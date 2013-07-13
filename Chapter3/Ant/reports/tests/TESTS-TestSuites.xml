@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="1" failures="0" hostname="behemoth.local" id="0" name="AppTest" package="com.github.r351574nc3.packtpub.junit" tests="1" time="0.0" timestamp="2013-06-27T07:56:03">
+      <properties>
+          <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+
+          <property name="gopherProxySet" value="false" />
+
+          <property name="ant.file.JUnit Example" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/build.xml" />
+
+          <property name="java.vm.version" value="25.0-b34" />
+
+          <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre" />
+
+          <property name="file.separator" value="/" />
+
+          <property name="java.io.tmpdir" value="/var/folders/7q/ytyzrf0j05zc2kty6jglrgj00000gn/T/" />
+
+          <property name="path.separator" value=":" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="java.version" value="1.8.0-ea" />
+
+          <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/JObjC.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/classes" />
+
+          <property name="ant.core.lib" value="/usr/share/ant/lib/ant.jar" />
+
+          <property name="reports.tests" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/reports/tests" />
+
+          <property name="java.specification.vendor" value="Oracle Corporation" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="ant.java.version" value="1.7" />
+
+          <property name="ant.project.invoked-targets" value="test" />
+
+          <property name="user.home" value="/Users/r351574nc3" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
+
+          <property name="java.runtime.version" value="1.8.0-ea-b92" />
+
+          <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
+
+          <property name="ant.project.default-target" value="test" />
+
+          <property name="java.specification.version" value="1.8" />
+
+          <property name="sun.arch.data.model" value="64" />
+
+          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="os.version" value="10.8.4" />
+
+          <property name="java.vm.vendor" value="Oracle Corporation" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="build" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/build" />
+
+          <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+
+          <property name="src.tests" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/test/src" />
+
+          <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+
+          <property name="os.name" value="Mac OS X" />
+
+          <property name="java.class.path" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/test/build:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-antlr.jar:/usr/share/ant/lib/ant-jmf.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-junit4.jar:/usr/share/ant/lib/ant-swing.jar:/usr/share/ant/lib/ant-testutil.jar:/usr/share/ant/lib/ant.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/lib/tools.jar:/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/lib/junit-4.11.jar:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar" />
+
+          <property name="ant.file" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/build.xml" />
+
+          <property name="sun.os.patch.level" value="unknown" />
+
+          <property name="ant.file.type" value="file" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="ant.project.name" value="JUnit Example" />
+
+          <property name="ant.library.dir" value="/usr/share/ant/lib" />
+
+          <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on June 20 2012" />
+
+          <property name="reports" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/reports" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
+
+          <property name="file.encoding" value="UTF-8" />
+
+          <property name="sun.cpu.isalist" value="" />
+
+          <property name="user.country" value="US" />
+
+          <property name="basedir" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant" />
+
+          <property name="java.vm.specification.version" value="1.8" />
+
+          <property name="java.library.path" value="/Users/r351574nc3/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib" />
+
+          <property name="user.dir" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant" />
+
+          <property name="src" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/src" />
+
+          <property name="java.vendor.url" value="http://java.oracle.com/" />
+
+          <property name="ant.file.type.JUnit Example" value="file" />
+
+          <property name="os.arch" value="x86_64" />
+
+          <property name="java.class.version" value="52.0" />
+
+          <property name="ant.home" value="/usr/share/ant" />
+
+          <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+
+          <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+
+          <property name="user.name" value="r351574nc3" />
+
+          <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/endorsed" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.github.r351574nc3.packtpub.junit.AppTest filtertrace=true haltOnError=false haltOnFailure=true formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/reports/tests/TEST-com.github.r351574nc3.packtpub.junit.AppTest.xml crashfile=/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/junitvmwatcher3785930286390841930.properties propsfile=/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/junit4367284298019508551.properties" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="build.tests" value="/Users/r351574nc3/projects/git/junit-minibook/Chapter3/Ant/test/build" />
+
+          <property name="user.language" value="en" />
+
+          <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+
+          <property name="sun.jnu.encoding" value="UTF-8" />
+
+          <property name="java.ext.dirs" value="/Users/r351574nc3/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+
+          <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
+
+          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+
+          <property name="line.separator" value="&#xa;" />
+
+      </properties>
+
+      <error message="com.github.r351574nc3.packtpub.junit.AppTest" type="java.lang.ClassNotFoundException">java.lang.ClassNotFoundException: com.github.r351574nc3.packtpub.junit.AppTest
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:365)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:354)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:353)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:423)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:356)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:257)
+</error>
+
+      <system-out><![CDATA[]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+</testsuites>
