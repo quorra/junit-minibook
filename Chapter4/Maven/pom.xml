@@ -11,6 +11,7 @@
     <maven-surefire-plugin.version>2.14</maven-surefire-plugin.version>
     <sonar.dynamicAnalysis>true</sonar.dynamicAnalysis>
     <sonar.java.coveragePlugin>cobertura</sonar.java.coveragePlugin>
+    <cobertura-maven-plugin.version>2.4</cobertura-maven-plugin.version>
   </properties>
   <dependencies>
     <dependency>
