@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">JUnit Example</string>
+    <string name="button_listen">Listen</string>
     <string id="ButtonRed" name="ButtonRed">Red</string>
 	<string id="ButtonBlue" name="ButtonBlue">Blue</string>
 	<string id="ButtonGreen" name="ButtonGreen">Green</string>

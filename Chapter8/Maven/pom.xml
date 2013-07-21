@@ -2,27 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.r351574nc3.packtpub.junit</groupId>
-    <artifactId>junit-example</artifactId>
+    <artifactId>junit-example-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>apk</packaging>
-    <name>JUnit Example</name>
+    <packaging>pom</packaging>
+    <name>JUnit Example Parent</name>
 
     <properties>
         <android-maven-plugin.version>3.6.0</android-maven-plugin.version>
         <android-platform-version>16</android-platform-version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.google.android</groupId>
-            <artifactId>android</artifactId>
-            <version>4.1.1.4</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
     <build>
-        <finalName>${project.artifactId}</finalName>
-        <sourceDirectory>src/main/java/</sourceDirectory>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -35,7 +25,15 @@
                         <assetsDirectory>${project.basedir}/src/main/assets</assetsDirectory>
                         <resourceDirectory>${project.basedir}/src/main/android-resources</resourceDirectory>
                         <resourceOverlayDirectory>${project.basedir}/src/main/overlay</resourceOverlayDirectory>
+                        <emulator>
+                            <avd>N4</avd>
+                            <!-- Wait for emulator starting (3 minutes) -->
+                            <wait>180000</wait>
+                            <options>-no-skin</options>
+                        </emulator>
                         <sdk>
+                            <path>${env.ANDROID_HOME}</path>
+                            
                             <platform>${android-platform-version}</platform>
                         </sdk>
                         <deleteConflictingFiles>true</deleteConflictingFiles>
@@ -44,23 +42,11 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                <artifactId>android-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+
     </build>
 
-    <profiles>
-        <profile>
-            <id>android-16</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <android-os-version>4.1.1.4</android-os-version>
-            </properties>
-        </profile>
-    </profiles>
+    <modules>
+        <module>app</module>
+        <module>test</module>
+    </modules>
 </project>

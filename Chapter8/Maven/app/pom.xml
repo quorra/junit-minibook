@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.r351574nc3.packtpub.junit</groupId>
+    <artifactId>junit-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>apk</packaging>
+    <name>JUnit Example</name>
+    <parent>
+        <groupId>com.github.r351574nc3.packtpub.junit</groupId>
+        <artifactId>junit-example-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <android.device>emulator</android.device>
+        <android-maven-plugin.version>3.6.0</android-maven-plugin.version>
+        <android-platform-version>16</android-platform-version>
+        <junit.version>4.11</junit.version>
+        <maven-surefire-plugin.version>2.14.1</maven-surefire-plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.1.1.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android-test</artifactId>
+            <version>4.1.1.4</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <sourceDirectory>src/main/java/</sourceDirectory>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>${android-maven-plugin.version}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <androidManifestFile>${project.basedir}/src/main/resources/META-INF/AndroidManifest.xml</androidManifestFile>
+                        <assetsDirectory>${project.basedir}/src/main/assets</assetsDirectory>
+                        <resourceDirectory>${project.basedir}/src/main/android-resources</resourceDirectory>
+                        <resourceOverlayDirectory>${project.basedir}/src/main/overlay</resourceOverlayDirectory>
+                        <sdk>
+                            <platform>${android-platform-version}</platform>
+                        </sdk>
+                        <deleteConflictingFiles>true</deleteConflictingFiles>
+                        <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId> 
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>android-16</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <android-os-version>4.1.1.4</android-os-version>
+            </properties>
+        </profile>
+    </profiles>
+</project>
