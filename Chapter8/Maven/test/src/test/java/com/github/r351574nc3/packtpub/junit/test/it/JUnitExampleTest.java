@@ -26,24 +26,50 @@
  *  of the authors and should not be interpreted as representing official policies, 
  *  either expressed or implied, of the FreeBSD Project.
  */
-package com.github.r351574nc3.packtpub.junit;
+package com.github.r351574nc3.packtpub.junit.test.it;
 
-import android.app.Activity;
-import android.annotation.SuppressLint;
-import android.os.Bundle;
+import android.test.ActivityInstrumentationTestCase2;
 
-public class JUnitExample extends Activity {
-    @SuppressLint("NewApi")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+import com.github.r351574nc3.packtpub.junit.JUnitExample;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
+
+/**
+ * This is a simple framework for a test of an Application.  See
+ * {@link android.test.ApplicationTestCase ApplicationTestCase} for more information on
+ * how to write and extend Application tests.
+ * <p/>
+ * To run this test, you can type:
+ * adb shell am instrument -w \
+ * -e class com.github.r351574nc3.packtpub.junit.JUnitExampleTest \
+ * com.github.r351574nc3.packtpub.junit.tests/android.test.InstrumentationTestRunner
+ */
+public class JUnitExampleTest extends ActivityInstrumentationTestCase2<JUnitExample> {
+
+    public JUnitExampleTest() {
+        super("com.github.r351574nc3.packtpub.junit", JUnitExample.class);
     }
-    
-    public String getUrl() {
-        return getIntent().getStringExtra(MainActivity.URL);
+
+    @Test
+    public void thisAlwaysPasses() {
     }
 
-    public String getMessage() {
-        return getIntent().getStringExtra(MainActivity.MESSAGE);
+    @Test
+    public void compareIntegers() {
+        assertEquals("failure - strings not same", 5l, 4l);
+    }
+
+    @Test
+    @Ignore
+    public void thisIsIgnored() {
     }
 }

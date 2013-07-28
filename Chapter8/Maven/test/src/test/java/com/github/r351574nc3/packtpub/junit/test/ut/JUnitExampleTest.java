@@ -26,9 +26,9 @@
  *  of the authors and should not be interpreted as representing official policies, 
  *  either expressed or implied, of the FreeBSD Project.
  */
-package com.github.r351574nc3.packtpub.junit.test;
+package com.github.r351574nc3.packtpub.junit.test.ut;
 
-import android.test.ActivityInstrumentationTestCase2;
+import android.test.ActivityUnitTestCase;
 
 import com.github.r351574nc3.packtpub.junit.JUnitExample;
 
@@ -53,10 +53,10 @@ import org.junit.runners.JUnit4;
  * -e class com.github.r351574nc3.packtpub.junit.JUnitExampleTest \
  * com.github.r351574nc3.packtpub.junit.tests/android.test.InstrumentationTestRunner
  */
-public class JUnitExampleTest extends ActivityInstrumentationTestCase2<JUnitExample> {
+public class JUnitExampleTest extends ActivityUnitTestCase<JUnitExample> {
 
     public JUnitExampleTest() {
-        super("com.github.r351574nc3.packtpub.junit", JUnitExample.class);
+        super(JUnitExample.class);
     }
 
     @Test

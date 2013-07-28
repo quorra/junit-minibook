@@ -10,7 +10,38 @@
     <properties>
         <android-maven-plugin.version>3.6.0</android-maven-plugin.version>
         <android-platform-version>16</android-platform-version>
+        <junit.version>4.11</junit.version>
+        <robolectric.version>2.1.1</robolectric.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.android</groupId>
+                <artifactId>android</artifactId>
+                <version>${android-os-version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.android</groupId>
+                <artifactId>android-test</artifactId>
+                <version>${android-os-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.robolectric</groupId>
+                <artifactId>robolectric</artifactId>
+                <version>${robolectric.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <pluginManagement>
@@ -49,4 +80,16 @@
         <module>app</module>
         <module>test</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>android-16</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <android-os-version>4.1.1.4</android-os-version>
+            </properties>
+        </profile>
+    </profiles>
 </project>

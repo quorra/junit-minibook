@@ -29,21 +29,33 @@
 package com.github.r351574nc3.packtpub.junit;
 
 import android.app.Activity;
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
-public class JUnitExample extends Activity {
-    @SuppressLint("NewApi")
+import static android.util.Log.*;
+
+public class MainActivity extends Activity {
+    private static final String TAG = "MainActivity";
+
+    public static final String MESSAGE = "com.github.r351574nc3.packtpub.junit.MESSAGE";
+    public static final String URL = "com.github.r351574nc3.packtpub.junit.URL";
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-    
-    public String getUrl() {
-        return getIntent().getStringExtra(MainActivity.URL);
+        setContentView(R.layout.main);
     }
 
-    public String getMessage() {
-        return getIntent().getStringExtra(MainActivity.MESSAGE);
+    public void clickExample(View view) {
+        final Intent intent = new Intent(this, JUnitExample.class);
+        final EditText editText = (EditText) findViewById(R.id.edit_message);
+        final String message = editText.getText().toString();
+
+        intent.putExtra(URL, "http://r351574nc3.github.io");
+        intent.putExtra(MESSAGE, message);
+
+        startActivity(intent);
     }
 }

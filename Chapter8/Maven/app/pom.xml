@@ -16,28 +16,26 @@
         <android.device>emulator</android.device>
         <android-maven-plugin.version>3.6.0</android-maven-plugin.version>
         <android-platform-version>16</android-platform-version>
-        <junit.version>4.11</junit.version>
         <maven-surefire-plugin.version>2.14.1</maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
-            <version>4.1.1.4</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android-test</artifactId>
-            <version>4.1.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.robolectric</groupId>
+            <artifactId>robolectric</artifactId>
         </dependency>
     </dependencies>
     <build>
@@ -78,15 +76,4 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>android-16</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <android-os-version>4.1.1.4</android-os-version>
-            </properties>
-        </profile>
-    </profiles>
 </project>

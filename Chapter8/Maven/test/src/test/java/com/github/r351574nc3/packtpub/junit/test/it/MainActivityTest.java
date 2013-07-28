@@ -26,24 +26,55 @@
  *  of the authors and should not be interpreted as representing official policies, 
  *  either expressed or implied, of the FreeBSD Project.
  */
-package com.github.r351574nc3.packtpub.junit;
+package com.github.r351574nc3.packtpub.junit.test.it;
 
 import android.app.Activity;
-import android.annotation.SuppressLint;
-import android.os.Bundle;
+import android.app.Instrumentation;
+import android.app.Instrumentation.ActivityMonitor;
+import android.test.ActivityInstrumentationTestCase2;
+import android.test.TouchUtils;
+import android.test.ViewAsserts;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class JUnitExample extends Activity {
-    @SuppressLint("NewApi")
+import android.test.suitebuilder.annotation.SmallTest;
+
+import com.github.r351574nc3.packtpub.junit.R;
+
+import com.github.r351574nc3.packtpub.junit.MainActivity;
+import com.github.r351574nc3.packtpub.junit.JUnitExample;
+
+public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
+
+    private MainActivity main;
+
+    public MainActivityTest() {
+        super("com.github.r351574nc3.packtpub.junit", MainActivity.class);
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-    
-    public String getUrl() {
-        return getIntent().getStringExtra(MainActivity.URL);
+    protected void setUp() throws Exception {
+        super.setUp();
+        main = getActivity();
     }
 
-    public String getMessage() {
-        return getIntent().getStringExtra(MainActivity.MESSAGE);
+    public void testStartJunitExampleActivity() throws Exception {
+
+        // Create a monitor to use for timeout later
+        final ActivityMonitor monitor = getInstrumentation()
+            .addMonitor(JUnitExample.class.getName(), null, false);
+
+        // Click on the button from the main activity
+        final Button view = (Button) main.findViewById(R.id.button_listen);
+        TouchUtils.clickView(this, view);
+
+        // Use the monitor to timeout after 2 seconds if the activity doesn't start
+        final JUnitExample exampleActivity = (JUnitExample) monitor
+            .waitForActivityWithTimeout(2000);
+
+        assertNotNull(exampleActivity);
     }
-}
+
+} 

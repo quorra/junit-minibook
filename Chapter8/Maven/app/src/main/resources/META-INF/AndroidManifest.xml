@@ -4,13 +4,21 @@
       android:versionCode="1"
       android:versionName="1.0">
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".JUnitExample"
+        <activity android:name="MainActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.github.r351574nc3.packtpub.junit.JUnitExample"
+            android:label="@string/title_activity_display_message"
+            android:parentActivityName="com.github.r351574nc3.packtpub.junit.MainActivity" >
+          <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value="com.github.r351574nc3.packtpub.junit.MainActivity" />
+        </activity>
     </application>
-    <uses-sdk android:minSdkVersion="4" />
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
 </manifest>
