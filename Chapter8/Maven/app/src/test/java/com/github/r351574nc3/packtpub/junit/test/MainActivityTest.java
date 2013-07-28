@@ -109,15 +109,17 @@ public class MainActivityTest {
         assertNotNull("Button not allowed to be null", text);
         text.setText("Do tgat tging", NORMAL);
 
-        view.performClick();
-
         // Use API's rather than simulating user interaction
 
         // Trigger the API caused by a click
+        view.performClick();
+
         final ShadowActivity shadowActivity = shadowOf(activity);
         final Intent startedIntent = shadowActivity.getNextStartedActivity();
         final ShadowIntent shadowIntent = shadowOf(startedIntent);
 
-        assertThat(shadowIntent.getComponent().getClassName(), equalTo(JUnitExample.class.getName()));
+        assertThat(shadowIntent.getComponent().getClassName(), 
+                   equalTo(JUnitExample.class.getName()));
+
     }
 }
