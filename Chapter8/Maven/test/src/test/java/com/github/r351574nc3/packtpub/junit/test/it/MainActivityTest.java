@@ -37,6 +37,7 @@ import android.test.ViewAsserts;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import android.test.suitebuilder.annotation.SmallTest;
@@ -66,6 +67,19 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         final ActivityMonitor monitor = getInstrumentation()
             .addMonitor(JUnitExample.class.getName(), null, false);
 
+        // Set text field value
+        try {
+            runTestOnUiThread(new Runnable() {
+                    public void run() {
+                        final EditText text = (EditText) main.findViewById(R.id.edit_message);
+                        text.setText("Test Me");
+                    }
+                });
+        }
+        catch (Throwable t) {
+            // Deciding to let this slide
+        }
+
         // Click on the button from the main activity
         final Button view = (Button) main.findViewById(R.id.button_listen);
         TouchUtils.clickView(this, view);
@@ -75,6 +89,8 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
             .waitForActivityWithTimeout(2000);
 
         assertNotNull(exampleActivity);
+        
+        assertEquals("Wrong message", "Test Me", exampleActivity.getMessage());
     }
 
 } 

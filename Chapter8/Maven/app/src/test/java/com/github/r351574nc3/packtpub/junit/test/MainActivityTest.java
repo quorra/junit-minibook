@@ -26,7 +26,7 @@
  *  of the authors and should not be interpreted as representing official policies, 
  *  either expressed or implied, of the FreeBSD Project.
  */
-package com.github.r351574nc3.packtpub.junit.test.ut;
+package com.github.r351574nc3.packtpub.junit.test;
 
 import android.app.Activity;
 import android.app.Instrumentation;
@@ -34,8 +34,6 @@ import android.app.Instrumentation.ActivityMonitor;
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.test.ViewAsserts;
-import android.test.suitebuilder.annotation.SmallTest;
-import android.test.suitebuilder.annotation.MediumTest;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -47,46 +45,48 @@ import com.github.r351574nc3.packtpub.junit.R;
 import com.github.r351574nc3.packtpub.junit.MainActivity;
 import com.github.r351574nc3.packtpub.junit.JUnitExample;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.shadows.ShadowActivity;
+import org.robolectric.shadows.ShadowIntent;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static org.robolectric.Robolectric.clickOn;
+import static org.robolectric.Robolectric.shadowOf;
+
+import static org.junit.Assert.*;
+
 import static android.widget.TextView.BufferType.NORMAL;
 
-
-public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
-    private Intent mainIntent;
-
-    public MainActivityTest() {
-        super(MainActivity.class);
-    }
+@RunWith(RobolectricTestRunner.class)
+public class MainActivityTest {
+    private MainActivity activity;
 
     /**
      * Setup the Intent and Activity for other tests
      */
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-
-        // This is one way to get the intent
-        /*
-        final Intent intent = new Intent(getInstrumentation().getTargetContext(),
-                                         MainActivity.class);
-        */
-        
-        // This is another way
-        mainIntent = new Intent(Intent.ACTION_MAIN);
+    @Before
+    public void setUp() {
+        activity = Robolectric.buildActivity(MainActivity.class).create().get();
     }
 
-    @MediumTest
-    public void testPreconditions() {
-        startActivity(mainIntent, null, null);
-        assertNotNull(getActivity());
+    protected Activity getActivity() {
+        return activity;
+    }
 
+    @Test
+    public void testPreconditions() {
         final Button listen = (Button) getActivity().findViewById(R.id.button_listen);
         assertNotNull(listen);        
     }
 
-    @SmallTest
+    @Test
     public void testButtonExists() {
-        startActivity(mainIntent, null, null);
-        final MainActivity main = getActivity();
+        final MainActivity main = (MainActivity) getActivity();
 
         final int buttonId = R.id.button_listen;
         assertNotNull(main.findViewById(buttonId));
@@ -94,10 +94,9 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
         assertEquals("Incorrect label of the button", "Listen", view.getText());
     }
 
-    @SmallTest
+    @Test
     public void testStartJunitExampleActivity() {
-        startActivity(mainIntent, null, null);
-        final MainActivity main = getActivity();
+        final MainActivity main = (MainActivity) getActivity();
 
         // Get access to the button
         final int buttonId = R.id.button_listen;
@@ -110,21 +109,15 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
         assertNotNull("Button not allowed to be null", text);
         text.setText("Do tgat tging", NORMAL);
 
+        view.performClick();
+
         // Use API's rather than simulating user interaction
 
         // Trigger the API caused by a click
-        getActivity().clickExample(view);
+        final ShadowActivity shadowActivity = shadowOf(activity);
+        final Intent startedIntent = shadowActivity.getNextStartedActivity();
+        final ShadowIntent shadowIntent = shadowOf(startedIntent);
 
-        // Check the intent which was started
-        final Intent exampleIntent = getStartedActivityIntent();
-        assertNotNull("Intent cannot be null", exampleIntent);
-
-        assertEquals("URL was incorrect","Do tgat tging", 
-                     exampleIntent.getExtras().getString(MainActivity.MESSAGE));
-    }
-
-    @Override
-    protected void tearDown() throws Exception {    
-        super.tearDown();
+        assertThat(shadowIntent.getComponent().getClassName(), equalTo(JUnitExample.class.getName()));
     }
 }
